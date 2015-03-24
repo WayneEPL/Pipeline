@@ -1,0 +1,99 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.6deb1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Mar 18, 2015 at 01:41 PM
+-- Server version: 5.5.37-0ubuntu0.13.10.1
+-- PHP Version: 5.5.3-1ubuntu2.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `pipeline`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `requests`
+--
+
+CREATE TABLE IF NOT EXISTS `requests` (
+  `SL_NO` int(4) NOT NULL AUTO_INCREMENT,
+  `SRN` varchar(32) NOT NULL,
+  `FILE_NAME` varchar(400) NOT NULL,
+  `REVISION` int(11) NOT NULL DEFAULT '0',
+  `CREATE_TIME` datetime NOT NULL,
+  `MOD_TIME` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`SL_NO`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+
+--
+-- Dumping data for table `requests`
+--
+
+INSERT INTO `requests` (`SL_NO`, `SRN`, `FILE_NAME`, `REVISION`, `CREATE_TIME`, `MOD_TIME`) VALUES
+(36, '1426681376', 'H:/Pipeline/sig/results/ef14c12e73843eb709acc27a5c249554Bonafide_Athul_Finalle_.pdf', 0, '2015-03-18 12:22:56', '0000-00-00 00:00:00'),
+(37, '1426682244', 'H:/Pipeline/sig/results/b37a525de5bce74e396233930c974f12Bonafide_Athul_Finalle_.pdf', 0, '2015-03-18 12:37:24', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `signs`
+--
+
+CREATE TABLE IF NOT EXISTS `signs` (
+  `ID` int(5) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(300) NOT NULL,
+  `CERT_ADD` varchar(300) NOT NULL,
+  `TYPE` varchar(20) NOT NULL,
+  `TIME` datetime NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `signs`
+--
+
+INSERT INTO `signs` (`ID`, `NAME`, `CERT_ADD`, `TYPE`, `TIME`) VALUES
+(1, 'Dr. Sheena Mathew', 'sdfsdfasdfasdfa.cert', 'fwd_sc_sig', '2015-03-18 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `upload_entry`
+--
+
+CREATE TABLE IF NOT EXISTS `upload_entry` (
+  `SL_NO` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `EMAIL` varchar(300) NOT NULL,
+  `FILE_LOCATION` varchar(300) NOT NULL,
+  `UPLOAD_TIME` datetime NOT NULL,
+  `LAST_MODIFIED_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `STATUS` int(1) NOT NULL DEFAULT '0',
+  `SRN` int(8) NOT NULL,
+  PRIMARY KEY (`SL_NO`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=63 ;
+
+--
+-- Dumping data for table `upload_entry`
+--
+
+INSERT INTO `upload_entry` (`SL_NO`, `EMAIL`, `FILE_LOCATION`, `UPLOAD_TIME`, `LAST_MODIFIED_TIME`, `STATUS`, `SRN`) VALUES
+(0000000058, 'anush@techstream.org', 'ef14c12e73843eb709acc27a5c249554Bonafide_Athul_Finalle.pdf', '2015-03-18 12:22:55', '2015-03-18 12:22:55', 0, 232),
+(0000000059, 'anush@techstream.org', 'aab96296487db6893a5a4656bdcdc946Bonafide_Athul_Finalle.pdf', '2015-03-18 12:33:51', '2015-03-18 12:33:51', 1, 0),
+(0000000060, 'anush@techstream.org', 'a086a8d2fe1c0d656d034db9ffee6c6bBonafide_Athul_Finalle.pdf', '2015-03-18 12:35:42', '2015-03-18 12:35:42', 0, 0),
+(0000000061, 'anush@techstream.org', 'a8b8caec752b25f5070aaa7fbe00ffb5Bonafide_Athul_Finalle.pdf', '2015-03-18 12:36:14', '2015-03-18 12:36:14', 1, 0),
+(0000000062, 'anush@techstream.org', 'b37a525de5bce74e396233930c974f12Bonafide_Athul_Finalle.pdf', '2015-03-18 12:37:23', '2015-03-18 12:37:23', 1, 1426682244);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
